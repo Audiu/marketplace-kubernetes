@@ -1,7 +1,9 @@
 grafana:
   adminPassword: changeme
-  service:
-    type: LoadBalancer
+  ingress:
+    enabled: true
+    hosts: 
+      - grafana.repostexchange.com
 
 kubelet:
   namespace: prometheus-operator
