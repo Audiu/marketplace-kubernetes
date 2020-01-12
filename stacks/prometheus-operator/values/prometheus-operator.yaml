@@ -1,6 +1,8 @@
 grafana:
   adminPassword: changeme
   ingress:
+    annotations: 
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     enabled: true
     hosts: 
       - grafana.repostexchange.com

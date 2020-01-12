@@ -42233,10 +42233,10 @@ spec:
         app: grafana
         release: prometheus-operator
       annotations:
-        checksum/config: 48e1bb96e8ecdd628ad888de307d4b774159524b54be4fa53faf8a54a0ad037e
-        checksum/dashboards-json-config: 7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6
-        checksum/sc-dashboard-provider-config: 65b5695e07def4b92f2d7615b2a68a0aff45f337246d8b2ee5fdae8d0381f5f4
-        checksum/secret: 775df56b756d4692d8d14559e8fdf8fa1a1d08605ca51d5c6cbd6af2452baced
+        checksum/config: 01d470d0a69461726a8107c3c4093e122b27267b8eca9100954466707fdc9b8f
+        checksum/dashboards-json-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+        checksum/sc-dashboard-provider-config: 62f1ff7c285f6807193cb216f33ad4a42d2bd2e6d0d936b1a8efcbbe0f54b33a
+        checksum/secret: d4cb95306bf313c5bdd2bc04c1193f455d7f02292375e66d8cd368d822adace1
     spec:
       
       serviceAccountName: prometheus-operator-grafana
@@ -42646,6 +42646,9 @@ metadata:
     chart: grafana-4.0.2
     release: prometheus-operator
     heritage: Tiller
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    
 spec:
   rules:
     - host: grafana.repostexchange.com
