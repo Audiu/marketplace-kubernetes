@@ -41857,7 +41857,7 @@ metadata:
     release: prometheus-operator
     heritage: Tiller
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: service
       port: 80
@@ -42633,6 +42633,32 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
+
+---
+# Source: prometheus-operator/charts/grafana/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-operator-grafana
+  namespace: prometheus-operator
+  labels:
+    app: grafana
+    chart: grafana-4.0.2
+    release: prometheus-operator
+    heritage: Tiller
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    
+spec:
+  rules:
+    - host: grafana.repostexchange.com
+      http:
+        paths:
+
+          - path: /
+            backend:
+              serviceName: prometheus-operator-grafana
+              servicePort: 80
 
 ---
 # Source: prometheus-operator/templates/alertmanager/alertmanager.yaml
@@ -44759,10 +44785,6 @@ spec:
 
 ---
 # Source: prometheus-operator/charts/grafana/templates/headless-service.yaml
-
-
----
-# Source: prometheus-operator/charts/grafana/templates/ingress.yaml
 
 
 ---

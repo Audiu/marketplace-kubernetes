@@ -1,7 +1,11 @@
 grafana:
   adminPassword: changeme
-  service:
-    type: LoadBalancer
+  ingress:
+    annotations: 
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    enabled: true
+    hosts: 
+      - grafana.repostexchange.com
 
 kubelet:
   namespace: prometheus-operator
